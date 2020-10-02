@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Mural da Gerência Geral";
+}
+<h2>Mural de Mensagens </h2>
+
+<div id="mural-mensagens"><br />
+ 
+ @foreach(var mensagensDoMural in Model){
+  <div id="dialogo">
+    <div class="editor-label">
+        <label id="mensagem-colaborador" style="color:#BDBE00">Colaborador </label><br />
+        @mensagensDoMural.Mensagem.Conteudo
+    </div>
+    
+    <div class="editor-Label">
+            <label id="mensagem-gerente" style="color:#004b93">Gerente Geral </label><br />
+          @mensagensDoMural.Conteudo
+    </div>
+    <hr/>
+    </div> 
+     }
+
+
+
+</div>
+
+@if(Model.HasPreviousPage){ 
+ 
+@Html.ActionLink("<<<", "MostrarMuralDeMensagensGerente", new { page = (Model.PageIndex - 1) })
+ 
+}
+ 
+@if (Model.HasNextPage) { 
+ 
+@Html.ActionLink(">>>", "MostrarMuralDeMensagensGerente", new { page = (Model.PageIndex + 1) })
+ 
+ } 

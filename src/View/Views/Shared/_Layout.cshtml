@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Gerência Geral</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+        <script language="javascript">
+            function validarTextArea(idObjeto) {
+                var texto = '';
+
+                if (document.getElementById(idObjeto) != null) {
+                    texto = document.getElementById(idObjeto).value;
+                }
+                if (texto != null && texto.length > 0) {
+                    return true;
+                }
+                else {
+                    return false;
+
+                }
+            }
+        </script>        
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <Span class="site-title"><a href ="/GEFALA/Home/Index/"><img src="~/Images/CALLCENTERlogo1.jpg"
+ width="320" height="70"/></a><img src="~/Images/falecom.jpg"
+ style="margin-right:0px;margin-left:49%;margin-top:0px;botton:50px;"/></span></Span>
+                </div>
+                <div class="float-right">
+                    
+                    <nav>
+		        
+                        <ul id="menu">
+		            		
+                            <li style="height:10px;margin-right:30px;"><a href="#">Admistrador Geral</a></li>
+                        </ul>    
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+               <!-- <div class="float-left"> -->
+                    <span><br />&copy; @DateTime.Now.Year - <a href="/GEFALA/Home/About">Analista e desenvolvedor Marcelo do Nascimento </a><img src="~/Images/logo-smart.gif" width="200" height="60" style="float:right;position:relative;margin-left:70%;"/></span>
+                <!-- </div> -->
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

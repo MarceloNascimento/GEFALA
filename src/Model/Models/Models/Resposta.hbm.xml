@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="GEFALA" namespace="GEFALA.Models">
+  <class name="Resposta" table="resposta">
+    <id name="Id" column="idresposta">
+      <generator class="native"></generator>
+    </id>    
+    <property name="Conteudo" column="conteudo" type="String"/>
+    <property name="User" column="user" type="String"/>
+    <property name="Data" column="data" type="DateTime"/>
+    
+   <many-to-one name="Mensagem"     class="GEFALA.Models.Mensagem"    unique="true"  column="mensagem_idmensagem"  cascade="save-update" lazy="false"/> 
+   <many-to-one name="Respondedor"  class="GEFALA.Models.Respondedor" column="respondedor_idrespondedor" cascade="save-update" lazy="false"/>
+ 
+    <!--mensagem_idmensagem-->
+  </class>
+
+</hibernate-mapping>

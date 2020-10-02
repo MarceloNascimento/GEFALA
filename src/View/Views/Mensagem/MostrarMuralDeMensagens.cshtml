@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Mural do Admistrador";
+}
+<h2>Mural de Mensagens </h2>
+
+<div id="mural-mensagens"><br />
+ 
+ @foreach(var mensagensDoMural in Model){
+  <div id="dialogo">
+    <div class="editor-label">
+        <label id="mensagem-colaborador" style="color:#BDBE00">Colaborador </label><br />
+        @mensagensDoMural.Mensagem.Conteudo
+    </div>
+    
+    <div class="editor-Label">
+            <label id="mensagem-Admistrador" style="color:#004b93">Admistrador Geral </label><br />
+          @mensagensDoMural.Conteudo
+    </div>
+    <hr/>
+    </div> 
+     }
+
+
+
+</div>

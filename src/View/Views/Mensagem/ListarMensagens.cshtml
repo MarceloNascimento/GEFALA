@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "ListarMensagens";
+}
+<h2>Lista de Mensagens Recebidas</h2>
+<span style="margin-left: 80%; color: Green;">@Html.ActionLink("Mural do Admistrador", "MostrarMuralDeMensagensAdmistrador", "Admistrador")     </span>
+<table>
+    <tr>
+        <th>N°</th>
+        <th>Data&nbsp;</th>
+        <th>Prévia do Conteúdo</th>
+        <th>Quem Perguntou&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>Assunto</th>
+        <th colspan="2">Ação a Tomar&nbsp;</th>
+    </tr>
+
+    @foreach (var item in Model)
+{
+        @if(item.Setor ==){
+<tr>
+        <td>@item.Id</td>
+        <td>@item.Data.ToShortDateString()</td>
+        <td>@item.Conteudo</td>
+        <td>&nbsp;@item.User.Replace("CALLCENTER\\", "")&nbsp;</td>
+        <td>@item.Assunto</td>
+         <td>
+            @Html.ActionLink("Responder", "ResponderMensagemEnviadaAoAdmistrador", new { id = item.Id })
+            @Html.ActionLink("Deletar", "ocultarMensagemPeloAdmistrador", new { id = item.Id })
+        </td>
+    </tr>
+    }
+}
+
+</table>

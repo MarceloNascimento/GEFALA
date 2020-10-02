@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="GEFALA" namespace="GEFALA.Models">
+  <class name="AdministradorDoSistema" table="administradores">
+    <id name="Id" column="idadministradores">
+      <generator class="native"></generator>
+    </id>
+    <property name="Nome" column="nome" type="String"/>
+    <property name="Senha" column="senha" type="String"/>
+   </class>
+
+</hibernate-mapping>

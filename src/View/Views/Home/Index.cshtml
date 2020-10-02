@@ -1,0 +1,97 @@
+﻿
+@model GEFALA.Models.Mensagem
+
+@{
+    ViewBag.Title = "Fale com a ";
+}
+<h2>Fale com o(a) Admistrador Geral</h2>
+ 
+<div id="inicio">
+
+@using (Html.BeginForm("GravarMensagem", "Mensagem", "POST"))
+{
+    @Html.ValidationSummary(true)
+    
+<fieldset>        
+     <label>Area:</label>
+         <select class="text-box single-line" id="txt" maxlength="500" name="mensagem.Setor">
+                <option value="gerenciageral"> - Admistrador Geral - </option>
+                <option value="rh"> - Admistrador de RH - </option>                
+                <option value="producao"> - Admistrador de Producao - </option>
+                <option value="ti">- Supervisão de TI - </option> 
+                <option value="facilities">- Supervisão de Facilities - </option>               
+            </select><br />           
+      
+   <div class="editor-label">
+      
+        </div>
+    <div class="editor-field">
+         <label>Assunto:</label>
+         <select class="text-box single-line" id="txt" maxlength="500" name="mensagem.Assunto">
+                <option value="reclamacao"> - Reclamação - </option>
+                <option value="informacao"> - Informação - </option>                
+                <option value="sugestao"> - Sugestão - </option>
+                <option value="elogio">- Elogio - </option>                
+            </select>        
+                         
+        </div><br />
+        <div class="editor-field">
+            <label>Conteúdo da Mensagem:</label>
+            <textarea class="text-box single-line" id="txt" maxlength="500" name="mensagem.Conteudo" cols="" rows="12" style="max-width:600px;">Digite sua mensagem aqui ...</textarea>
+            @Html.ValidationMessageFor(model => model.Conteudo)
+        <a href="/GEFALA/Mensagem/MostrarMuralDeMensagens"><img style="position:relative;float:none;left:80px;margin-top:-20px;border:0px;padding:0px; margin-top:-20px;" alt="" src="~/Images/mural_recados.png"/><!--Fim mural-recados label --></a>                       
+        </div>        
+            
+        <div class="editor-field">
+              <input class="text-box single-line" id="User" name="mensagem.User" type="hidden" value=@User.Identity.Name />          
+             @Html.ValidationMessageFor(model => model.User)
+        </div>      
+        <p>
+            <input type="submit" value="Enviar" name="enviar" id="enviar" onclick="validarTextArea();" />
+        </p>
+    </fieldset>
+    <span style="color:rgb(250,0,0)">@Session["erroConteudo"] </span>
+}
+</div>   
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#txt").click(function () {
+            if ($("#txt").val() == "Digite sua mensagem aqui ...") {
+                alert("teste");
+                $("#txt").val() == "") 
+            }
+        });
+    })
+</script>
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        var txts = document.getElementsByTagName('TEXTAREA')
+
+        for (var i = 0, l = txts.length; i < l; i++) {
+            if (/^[0-9]+$/.test(txts[i].getAttribute("maxlength"))) {
+                var func = function () {
+                    var len = parseInt(this.getAttribute("maxlength"), 10);
+
+                    if (this.value.length > len) {
+                        alert('Favor digitar uma mensagem que contenha apenas : ' + len + ' caracteres');
+                        this.value = this.value.substr(0, len);
+                        return false;
+                    }
+                }
+
+                txts[i].onkeyup = func;
+                txts[i].onblur = func;
+            }
+        }
+    }
+</script>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

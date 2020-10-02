@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "LogIn";
+}
+
+<h2>Bem-vindo (a) Admistrador Geral!</h2>
+<form name="LogIn" method="post" action="@Url.Action("LogIn","Respondedor")">
+<label> Nome </label><input type="text" size="40" maxlength="20" name="respondedor.Nome"/>
+<label> Senha </label><input type="password" size="40" maxlength="20" name="respondedor.Senha"/>
+<input type="submit" name="LogIn" value="logIn" />
+</form>
+<h4 style="color:green;">Você está logado no sistema!</h4>

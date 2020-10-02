@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "LogIn";
+}
+
+<h2>Este sistema de login é uso exclusivo de pessoas autorizadas pela gerência geral!</h2>
+<form name="LogIn" method="post" action="@Url.Action("LogIn","Respondedor")">
+<label> Nome </label><input type="text" size="40" maxlength="20" name="respondedor.Nome"/>
+<label> Senha </label><input type="password" size="40" maxlength="20" name="respondedor.Senha"/>
+<input type="submit" name="LogIn" value="logIn" />
+</form>
+<h4 style="color:Red;">Login e o ou senha inválidos favor entrar em contato com departamento de suporte!</h4>
+

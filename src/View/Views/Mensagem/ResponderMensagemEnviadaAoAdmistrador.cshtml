@@ -1,0 +1,34 @@
+﻿@model GEFALA.Models.Resposta
+
+@{
+    ViewBag.Title = "Responder Mensagems Enviadas Ao Admistrador";
+}
+
+<h2>Responder Menssagens </h2>
+
+<form action="@Url.Action("ProcessarMensagemRespondidaPeloAdmistrador", "Mensagem")" method="post">
+    <fieldset>
+        <div class="editor-label">
+         <input name="resposta.Mensagem.Id" type="hidden" value=@ViewBag.mensagem.Id /> 
+         <input name="resposta.User" type="hidden" value="@User.Identity.Name" /> 
+         <input name="resposta.Respondedor.Id" type="hidden" value="1" />    
+               
+         <label>Mensagem: </label>   
+         <textarea  rows="10" cols="55" class="text-box single-line" id="Conteudo" name="resposta.Mensagem.Conteudo"  readonly>@ViewBag.mensagem.Conteudo</textarea>
+        
+        </div>    
+        
+        <div class="editor-label">
+            <label for="Conteudo">Digite sua resposta Abaixo</label>
+        </div>
+        <div class="editor-field">            
+          <textarea  rows="10" cols="55" class="text-box single-line" id="conteudo" name="resposta.Conteudo">...</textarea>
+        </div>
+
+            <input type="submit" value="Responder" />        
+    </fieldset>
+</form>
+
+<div>
+    @Html.ActionLink("Voltar para Lista", "ListarMensagens", "Mensagem")
+</div>

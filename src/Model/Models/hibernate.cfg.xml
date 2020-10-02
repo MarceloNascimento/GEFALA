@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is the ByteFX.Data.dll provider for MySql -->
+<hibernate-configuration  xmlns="urn:nhibernate-configuration-2.2" >
+	<session-factory>
+		<property name="connection.driver_class">NHibernate.Driver.MySqlDataDriver</property>
+		<property name="connection.connection_string">
+      Database=GEFALA;Data Source=127.0.0.1;User Id=root;Password=AchouQueEUIriaTeDarSenhakk!;
+      Allow Zero Datetime=true; 
+    </property>
+		<property name="dialect">NHibernate.Dialect.MySQLDialect</property>
+    <!--<property name="hbm2ddl.auto">update</property>-->
+	</session-factory>
+</hibernate-configuration>
